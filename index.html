@@ -1,203 +1,69 @@
-<!DOCTYPE html>
+from pathlib import Path
+
+content = """<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Yasada's Construction provides tiles and granite work in Karimnagar and across Telangana. Contact us for a free quotation.">
-  <meta name="theme-color" content="#111111">
-  <title>Yasada's Construction | Tiles & Granite Work</title>
-  <style>
-    :root { --bg:#101010; --panel:#191919; --gold:#d8ad52; --gold2:#f0d38c; --text:#f8f5ed; --muted:#c3bfb4; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:Arial,Helvetica,sans-serif; line-height:1.6; }
-    a { color:inherit; }
-    .wrap { width:min(1120px,92%); margin:auto; }
-    header { position:sticky; top:0; z-index:10; background:rgba(16,16,16,.96); border-bottom:1px solid #383020; backdrop-filter:blur(8px); }
-    .nav { min-height:76px; display:flex; justify-content:space-between; align-items:center; gap:20px; }
-    .brand { font-weight:900; letter-spacing:1.2px; color:var(--gold2); text-decoration:none; font-size:1.1rem; }
-    .brand small { display:block; color:var(--muted); font-size:.67rem; letter-spacing:2.5px; font-weight:600; }
-    nav { display:flex; flex-wrap:wrap; gap:18px; align-items:center; }
-    nav a { font-size:.92rem; text-decoration:none; color:var(--muted); }
-    nav a:hover { color:var(--gold2); }
-    .btn { display:inline-block; border:1px solid var(--gold); border-radius:4px; padding:12px 18px; font-weight:700; text-decoration:none; transition:.2s; }
-    .btn.gold { background:var(--gold); color:#17130b; }
-    .btn.outline { color:var(--gold2); }
-    .btn:hover { transform:translateY(-2px); filter:brightness(1.08); }
-    .hero { min-height:620px; display:grid; align-items:center; background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.72) 52%,rgba(0,0,0,.35)),url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85') center/cover; }
-    .hero-content { padding:90px 0; max-width:720px; }
-    .eyebrow { text-transform:uppercase; color:var(--gold2); letter-spacing:3px; font-size:.78rem; font-weight:700; }
-    h1 { font-size:clamp(2.6rem,6vw,5rem); line-height:1.03; margin:18px 0; letter-spacing:-1.5px; }
-    h1 span { color:var(--gold); }
-    .hero p { font-size:1.13rem; color:#e2ded5; max-width:600px; }
-    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:28px; }
-    .tagline-te { color:var(--gold2)!important; font-size:1rem!important; }
-    section { padding:82px 0; }
-    .section-head { max-width:700px; margin-bottom:35px; }
-    .section-head h2 { font-size:clamp(2rem,4vw,3rem); line-height:1.15; margin:8px 0 12px; }
-    .section-head p { color:var(--muted); margin:0; }
-    .grid { display:grid; gap:20px; }
-    .three { grid-template-columns:repeat(3,minmax(0,1fr)); }
-    .two { grid-template-columns:repeat(2,minmax(0,1fr)); }
-    .card { background:var(--panel); border:1px solid #332b1b; border-radius:8px; overflow:hidden; }
-    .card-body { padding:24px; }
-    .icon { color:var(--gold); font-size:1.8rem; }
-    .card h3 { margin:8px 0; font-size:1.2rem; }
-    .card p { color:var(--muted); margin:0; }
-    .about { background:#151515; }
-    .about-box { border-left:3px solid var(--gold); padding:10px 0 10px 24px; }
-    .about-box p { color:var(--muted); }
-    .person { display:inline-block; padding:8px 12px; margin:8px 8px 0 0; border:1px solid #554322; border-radius:30px; color:var(--gold2); }
-    .gallery-card { min-height:250px; display:flex; align-items:end; background-size:cover; background-position:center; position:relative; }
-    .gallery-card:before { content:""; position:absolute; inset:0; background:linear-gradient(transparent,rgba(0,0,0,.88)); }
-    .gallery-card div { position:relative; padding:22px; }
-    .gallery-card h3 { margin:0; }
-    .gallery-card p { margin:3px 0 0; font-size:.85rem; }
-    .notice { color:#d4c9ad; background:#211d14; border:1px solid #554322; padding:14px 16px; border-radius:6px; font-size:.9rem; }
-    .why { background:#151515; }
-    .why .card { padding:24px; }
-    .quote { background:linear-gradient(130deg,#2a2111,#171717 70%); border:1px solid #604b25; border-radius:10px; padding:34px; display:flex; align-items:center; justify-content:space-between; gap:25px; flex-wrap:wrap; }
-    .quote h2 { margin:0 0 8px; font-size:clamp(1.7rem,4vw,2.6rem); }
-    .quote p { margin:0; color:var(--muted); }
-    .contact { background:#151515; }
-    .contact-card { padding:28px; background:#1b1b1b; border:1px solid #382d19; border-radius:8px; }
-    .contact-card p { color:var(--muted); }
-    .contact-card a:not(.btn) { color:var(--gold2); }
-    footer { padding:28px 0; border-top:1px solid #302719; color:var(--muted); font-size:.9rem; }
-    .footer-row { display:flex; justify-content:space-between; gap:18px; flex-wrap:wrap; }
-    .lang { background:#171717; color:var(--gold2); border:1px solid #554322; padding:8px; border-radius:4px; }
-    @media(max-width:780px) { .nav { padding:14px 0; align-items:flex-start; flex-direction:column; } nav { gap:12px; } .hero { min-height:540px; } .three,.two { grid-template-columns:1fr; } section { padding:62px 0; } .gallery-card { min-height:230px; } }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Yasada's Construction provides tiles and granite work in Karimnagar and across Telangana.">
+<meta name="theme-color" content="#111111">
+<title>Yasada's Construction | Tiles & Granite Work</title>
+<style>
+:root{--bg:#101010;--panel:#191919;--gold:#d8ad52;--gold2:#f0d38c;--text:#f8f5ed;--muted:#c3bfb4}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;line-height:1.6}a{color:inherit}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(16,16,16,.96);border-bottom:1px solid #383020}.nav{min-height:76px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:1.2px;color:var(--gold2);text-decoration:none;font-size:1.1rem}.logo{width:65px;height:65px;object-fit:contain;flex-shrink:0;display:block}.brand small{display:block;color:var(--muted);font-size:.67rem;letter-spacing:2.5px;font-weight:600}
+nav{display:flex;flex-wrap:wrap;gap:18px;align-items:center}nav a{font-size:.92rem;text-decoration:none;color:var(--muted)}nav a:hover{color:var(--gold2)}.lang{background:#171717;color:var(--gold2);border:1px solid #554322;padding:8px;border-radius:4px}
+.btn{display:inline-block;border:1px solid var(--gold);border-radius:4px;padding:12px 18px;font-weight:700;text-decoration:none}.btn.gold{background:var(--gold);color:#17130b}.btn.outline{color:var(--gold2)}
+.hero{min-height:600px;display:grid;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.94),rgba(0,0,0,.65)),url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1800&q=85') center/cover}.hero-content{padding:80px 0;max-width:720px}.eyebrow{text-transform:uppercase;color:var(--gold2);letter-spacing:3px;font-size:.78rem;font-weight:700}h1{font-size:clamp(2.6rem,6vw,5rem);line-height:1.03;margin:18px 0;letter-spacing:-1.5px}h1 span{color:var(--gold)}.hero p{font-size:1.13rem;color:#e2ded5;max-width:600px}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+section{padding:76px 0}.section-head{max-width:700px;margin-bottom:30px}.section-head h2{font-size:clamp(2rem,4vw,3rem);line-height:1.15;margin:8px 0 12px}.section-head p,.card p,.about-box p,.contact-card p{color:var(--muted)}.grid{display:grid;gap:20px}.three{grid-template-columns:repeat(3,minmax(0,1fr))}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card,.contact-card{background:var(--panel);border:1px solid #332b1b;border-radius:8px;overflow:hidden}.card-body,.contact-card{padding:24px}.card h3{margin:8px 0}.icon{color:var(--gold);font-size:1.8rem}.about,.why,.contact{background:#151515}.about-box{border-left:3px solid var(--gold);padding:10px 0 10px 24px}.person{display:inline-block;padding:8px 12px;margin:8px 8px 0 0;border:1px solid #554322;border-radius:30px;color:var(--gold2)}
+.gallery-card{min-height:240px;display:flex;align-items:flex-end;background-size:cover;background-position:center;position:relative}.gallery-card:before{content:"";position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.88))}.gallery-card div{position:relative;padding:22px}.notice{color:#d4c9ad;background:#211d14;border:1px solid #554322;padding:14px 16px;border-radius:6px;font-size:.9rem}.quote{background:linear-gradient(130deg,#2a2111,#171717 70%);border:1px solid #604b25;border-radius:10px;padding:30px;display:flex;align-items:center;justify-content:space-between;gap:25px;flex-wrap:wrap}.quote h2{margin:0 0 8px}.quote p{margin:0;color:var(--muted)}.contact-card a:not(.btn){color:var(--gold2)}footer{padding:28px 0;border-top:1px solid #302719;color:var(--muted);font-size:.9rem}.footer-row{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+@media(max-width:780px){.nav{padding:14px 0;align-items:flex-start;flex-direction:column}nav{gap:12px}.hero{min-height:520px}.three,.two{grid-template-columns:1fr}section{padding:58px 0}.logo{width:54px;height:54px}}
+</style>
 </head>
 <body>
-<header>
-  <div class="wrap nav">
-    <a class="brand"YASADA’S CONSTRUCTION<small>TILES • GRANITE • FINISHING</small></a>
-    <nav aria-label="Main navigation">
-      <a href="#about">About</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
-      <select class="lang" id="language" aria-label="Choose language">
-        <option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिन्दी</option>
-      </select>
-    </nav>
-  </div>
-</header>
-
+<header><div class="wrap nav">
+<a class="brand" href="#home"><img src="./logo.png" alt="Yasada's Construction Logo" class="logo"><span>YASADA’S CONSTRUCTION<small>TILES • GRANITE • FINISHING</small></span></a>
+<nav aria-label="Main navigation"><a href="#about">About</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#contact">Contact</a>
+<select class="lang" id="language" aria-label="Choose language"><option value="en">English</option><option value="te">తెలుగు</option><option value="hi">हिन्दी</option></select></nav>
+</div></header>
 <main>
-  <section class="hero" id="home">
-    <div class="wrap hero-content">
-      <div class="eyebrow" data-en="Quality • Trust • Excellence" data-te="నాణ్యత • నమ్మకం • అత్యుత్తమ పని" data-hi="गुणवत्ता • भरोसा • उत्कृष्टता">Quality • Trust • Excellence</div>
-      <h1 data-en-html="YASADA’S<br><span>CONSTRUCTION</span>" data-te-html="యసాదా’స్<br><span>కన్‌స్ట్రక్షన్</span>" data-hi-html="यासदा’स<br><span>कंस्ट्रक्शन</span>">YASADA’S<br><span>CONSTRUCTION</span></h1>
-      <p data-en="Transforming Spaces with Quality Tiles &amp; Granite." data-te="నాణ్యమైన టైల్స్ మరియు గ్రానైట్ పనులతో మీ స్థలానికి అందమైన రూపం." data-hi="बेहतरीन टाइल्स और ग्रेनाइट के काम से आपके स्थान को सुंदर बनाते हैं।">Transforming Spaces with Quality Tiles &amp; Granite.</p>
-      <p class="tagline-te" data-en="మీ ఇంటికి అందమైన రూపం — నాణ్యమైన టైల్స్ &amp; గ్రానైట్ పనులు." data-te="మీ ఇంటికి అందమైన రూపం — నాణ్యమైన టైల్స్ &amp; గ్రానైట్ పనులు." data-hi="आपके घर को खूबसूरत बनाएँ — बेहतरीन टाइल्स और ग्रेनाइट का काम।">మీ ఇంటికి అందమైన రూపం — నాణ్యమైన టైల్స్ &amp; గ్రానైట్ పనులు.</p>
-      <div class="actions">
-        <a class="btn gold" href="https://wa.me/917013651332?text=Hello%20Yasada%E2%80%99s%20Construction%2C%20I%20need%20tiles%20and%20granite%20work.%20Please%20provide%20a%20quotation." target="_blank" rel="noopener" data-en="Get a Free Quote" data-te="ఉచిత కోట్ పొందండి" data-hi="मुफ़्त कोटेशन लें">Get a Free Quote</a>
-        <a class="btn outline" href="https://wa.me/919390177670?text=Hello%2C%20I%20would%20like%20to%20know%20your%20services%20and%20prices." target="_blank" rel="noopener" data-en="Ask About Services" data-te="సేవల గురించి అడగండి" data-hi="सेवाओं के बारे में पूछें">Ask About Services</a>
-      </div>
-    </div>
-  </section>
-
-  <section id="about" class="about">
-    <div class="wrap grid two">
-      <div class="section-head">
-        <div class="eyebrow" data-en="About Our Company" data-te="మా సంస్థ గురించి" data-hi="हमारी कंपनी के बारे में">About Our Company</div>
-        <h2 data-en="Finishing spaces with care and craftsmanship." data-te="శ్రద్ధతో, నైపుణ్యంతో మీ స్థలానికి అందమైన ముగింపు." data-hi="कौशल और देखभाल के साथ आपके स्थान को बेहतर बनाते हैं।">Finishing spaces with care and craftsmanship.</h2>
-        <p data-en="Yasada’s Construction offers tiles and granite work for homes and commercial spaces in Karimnagar and across Telangana. Contact us to discuss your requirements and request a quotation." data-te="యసాదా’స్ కన్‌స్ట్రక్షన్ కరీంనగర్‌తో పాటు తెలంగాణ అంతటా ఇళ్లు మరియు వాణిజ్య స్థలాలకు టైల్స్, గ్రానైట్ పనులు అందిస్తుంది. మీ అవసరాలను చర్చించడానికి మమ్మల్ని సంప్రదించండి." data-hi="यासदा’स कंस्ट्रक्शन करीमनगर और पूरे तेलंगाना में घरों तथा व्यावसायिक स्थानों के लिए टाइल्स और ग्रेनाइट का काम करता है। अपनी ज़रूरत और कोटेशन के लिए संपर्क करें।">Yasada’s Construction offers tiles and granite work for homes and commercial spaces in Karimnagar and across Telangana. Contact us to discuss your requirements and request a quotation.</p>
-      </div>
-      <div class="about-box">
-        <div class="eyebrow" data-en="People Behind the Work" data-te="మా సంస్థలో ముఖ్యులు" data-hi="हमारी टीम">People Behind the Work</div>
-        <h3>Yasada Mallesham</h3>
-        <p data-en="Main contact" data-te="ప్రధాన సంప్రదింపు వ్యక్తి" data-hi="मुख्य संपर्क">Main contact</p>
-        <h3>Yasada Pranay</h3>
-        <p data-en="Contact and enquiries" data-te="సంప్రదింపులు మరియు వివరాలు" data-hi="संपर्क और पूछताछ">Contact and enquiries</p>
-        <span class="person">Quality</span><span class="person">Trust</span><span class="person">Careful finishing</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="services">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-en="What We Do" data-te="మా సేవలు" data-hi="हमारी सेवाएँ">What We Do</div>
-        <h2 data-en="Tiles &amp; granite services" data-te="టైల్స్ మరియు గ్రానైట్ సేవలు" data-hi="टाइल्स और ग्रेनाइट सेवाएँ">Tiles &amp; granite services</h2>
-        <p data-en="Tell us about your space and we’ll discuss the right finish for your needs." data-te="మీ స్థలం గురించి వివరించండి; మీ అవసరాలకు సరిపోయే పనిని చర్చిద్దాం." data-hi="अपने स्थान के बारे में बताएँ; हम आपकी ज़रूरत के अनुसार काम पर चर्चा करेंगे।">Tell us about your space and we’ll discuss the right finish for your needs.</p>
-      </div>
-      <div class="grid three">
-        <article class="card"><div class="card-body"><div class="icon">▦</div><h3 data-en="Floor & Wall Tiles" data-te="నేల మరియు గోడ టైల్స్" data-hi="फर्श और दीवार की टाइल्स">Floor &amp; Wall Tiles</h3><p data-en="Tile work for living rooms, bedrooms, kitchens, bathrooms and other spaces." data-te="హాళ్లు, బెడ్‌రూమ్‌లు, వంటగదులు, బాత్‌రూమ్‌లు మరియు ఇతర ప్రదేశాలకు టైల్స్ పని." data-hi="लिविंग रूम, बेडरूम, रसोई, बाथरूम और अन्य जगहों के लिए टाइल्स का काम।">Tile work for living rooms, bedrooms, kitchens, bathrooms and other spaces.</p></div></article>
-        <article class="card"><div class="card-body"><div class="icon">◆</div><h3 data-en="Granite Work" data-te="గ్రానైట్ పని" data-hi="ग्रेनाइट का काम">Granite Work</h3><p data-en="Granite installation and finishing for suitable home and commercial applications." data-te="ఇళ్లు మరియు వాణిజ్య అవసరాలకు సరిపోయే గ్రానైట్ అమరిక మరియు ఫినిషింగ్." data-hi="घर और व्यावसायिक उपयोग के लिए ग्रेनाइट लगाने और फिनिशिंग का काम।">Granite installation and finishing for suitable home and commercial applications.</p></div></article>
-        <article class="card"><div class="card-body"><div class="icon">⌂</div><h3 data-en="Kitchen & Bathroom Finishes" data-te="వంటగది మరియు బాత్‌రూమ్ ఫినిషింగ్" data-hi="रसोई और बाथरूम फिनिशिंग">Kitchen &amp; Bathroom Finishes</h3><p data-en="Practical, neat tile and granite finishes for everyday-use spaces." data-te="రోజువారీ వినియోగ ప్రదేశాలకు ఉపయోగకరమైన, చక్కని టైల్స్ మరియు గ్రానైట్ ఫినిషింగ్." data-hi="रोज़मर्रा के उपयोग वाले स्थानों के लिए साफ-सुथरी टाइल्स और ग्रेनाइट फिनिशिंग।">Practical, neat tile and granite finishes for everyday-use spaces.</p></div></article>
-      </div>
-    </div>
-  </section>
-
-  <section id="gallery" class="about">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-en="Design Inspiration" data-te="డిజైన్ నమూనాలు" data-hi="डिज़ाइन प्रेरणा">Design Inspiration</div>
-        <h2 data-en="Ideas for your next space" data-te="మీ తదుపరి స్థలానికి డిజైన్ ఆలోచనలు" data-hi="आपकी अगली जगह के लिए डिज़ाइन विचार">Ideas for your next space</h2>
-        <p data-en="Explore sample interiors and finishes to help describe the look you want." data-te="మీకు కావలసిన రూపాన్ని వివరించేందుకు నమూనా ఇంటీరియర్లు, ఫినిషింగ్‌లను చూడండి." data-hi="अपनी पसंद का लुक बताने के लिए नमूना इंटीरियर और फिनिश देखें।">Explore sample interiors and finishes to help describe the look you want.</p>
-      </div>
-      <div class="grid three">
-        <article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80')"><div><h3>Modern Living Spaces</h3><p>Sample design inspiration</p></div></article>
-        <article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')"><div><h3>Elegant Flooring</h3><p>Sample design inspiration</p></div></article>
-        <article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80')"><div><h3>Kitchen & Interior Finishes</h3><p>Sample design inspiration</p></div></article>
-      </div>
-      <p class="notice" style="margin-top:22px">Gallery photos are sample design inspiration from Unsplash, not verified photographs of completed Yasada’s Construction projects. Replace them with your own project photos when available.</p>
-    </div>
-  </section>
-
-  <section class="why">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-en="Why Contact Us" data-te="మమ్మల్ని ఎందుకు సంప్రదించాలి" data-hi="हमसे संपर्क क्यों करें">Why Contact Us</div>
-        <h2 data-en="Your space, your style" data-te="మీ స్థలం, మీ అభిరుచి" data-hi="आपकी जगह, आपकी पसंद">Your space, your style</h2>
-      </div>
-      <div class="grid three">
-        <div class="card"><div class="card-body"><div class="icon">✓</div><h3 data-en="Discuss Your Needs" data-te="మీ అవసరాలను చర్చించండి" data-hi="अपनी ज़रूरतें बताएँ">Discuss Your Needs</h3><p data-en="Talk through your design, area and preferred finish before requesting a quote." data-te="కోట్ అడిగే ముందు మీ డిజైన్, విస్తీర్ణం, కావలసిన ఫినిషింగ్ గురించి మాట్లాడండి." data-hi="कोटेशन से पहले डिज़ाइन, क्षेत्रफल और पसंदीदा फिनिश पर चर्चा करें।">Talk through your design, area and preferred finish before requesting a quote.</p></div></div>
-        <div class="card"><div class="card-body"><div class="icon">⌖</div><h3 data-en="Serving Telangana" data-te="తెలంగాణ అంతటా సేవలు" data-hi="पूरे तेलंगाना में सेवा">Serving Telangana</h3><p data-en="Based in Karimnagar and available to discuss work across Telangana." data-te="కరీంనగర్ కేంద్రంగా తెలంగాణ అంతటా పనుల గురించి చర్చించవచ్చు." data-hi="करीमनगर से, पूरे तेलंगाना में काम के बारे में चर्चा कर सकते हैं।">Based in Karimnagar and available to discuss work across Telangana.</p></div></div>
-        <div class="card"><div class="card-body"><div class="icon">₹</div><h3 data-en="Request a Quote" data-te="కోట్ పొందండి" data-hi="कोटेशन माँगें">Request a Quote</h3><p data-en="Share the work details on WhatsApp to ask for a quotation." data-te="కోట్ కోసం పని వివరాలను WhatsApp‌లో పంపండి." data-hi="कोटेशन के लिए काम की जानकारी WhatsApp पर भेजें।">Share the work details on WhatsApp to ask for a quotation.</p></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <div class="wrap quote">
-      <div><h2 data-en="Planning a tile or granite project?" data-te="టైల్స్ లేదా గ్రానైట్ పని చేయించాలనుకుంటున్నారా?" data-hi="टाइल्स या ग्रेनाइट का काम करवाना है?">Planning a tile or granite project?</h2><p data-en="Tell us what you need and request a free quotation." data-te="మీ అవసరాలు తెలియజేసి ఉచిత కోట్ పొందండి." data-hi="अपनी ज़रूरत बताएँ और मुफ़्त कोटेशन माँगें।">Tell us what you need and request a free quotation.</p></div>
-      <a class="btn gold" href="https://wa.me/917013651332?text=Hello%20Yasada%E2%80%99s%20Construction%2C%20I%20need%20tiles%20and%20granite%20work.%20Please%20provide%20a%20quotation." target="_blank" rel="noopener">Get a Free Quote ↗</a>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="wrap">
-      <div class="section-head">
-        <div class="eyebrow" data-en="Contact Us" data-te="మమ్మల్ని సంప్రదించండి" data-hi="संपर्क करें">Contact Us</div>
-        <h2 data-en="Let’s talk about your project." data-te="మీ ప్రాజెక్ట్ గురించి మాట్లాడుకుందాం." data-hi="अपने प्रोजेक्ट के बारे में बात करें।">Let’s talk about your project.</h2>
-        <p data-en="Contact us for service details and a quotation." data-te="సేవల వివరాలు మరియు కోట్ కోసం మమ్మల్ని సంప్రదించండి." data-hi="सेवाओं की जानकारी और कोटेशन के लिए संपर्क करें।">Contact us for service details and a quotation.</p>
-      </div>
-      <div class="grid two">
-        <div class="contact-card"><h3>Yasada Mallesham</h3><p>Main contact</p><p><strong>Phone:</strong> <a href="tel:+917013651332">7013651332</a></p><a class="btn gold" href="https://wa.me/917013651332?text=Hello%20Yasada%E2%80%99s%20Construction%2C%20I%20need%20tiles%20and%20granite%20work.%20Please%20provide%20a%20quotation." target="_blank" rel="noopener">WhatsApp · Get a Quote</a></div>
-        <div class="contact-card"><h3>Yasada Pranay</h3><p>Contact and enquiries</p><p><strong>Phone:</strong> <a href="tel:+919390177670">9390177670</a></p><a class="btn outline" href="https://wa.me/919390177670?text=Hello%2C%20I%20would%20like%20to%20know%20your%20services%20and%20prices." target="_blank" rel="noopener">WhatsApp · Ask About Services</a></div>
-      </div>
-      <p style="color:var(--muted);margin-top:24px">📍 Karimnagar, Telangana, India · Service area: across Telangana</p>
-    </div>
-  </section>
+<section class="hero" id="home"><div class="wrap hero-content"><div class="eyebrow" data-en="Quality • Trust • Excellence" data-te="నాణ్యత • నమ్మకం • అత్యుత్తమ పని" data-hi="गुणवत्ता • भरोसा • उत्कृष्टता">Quality • Trust • Excellence</div>
+<h1 data-en-html="YASADA’S<br><span>CONSTRUCTION</span>" data-te-html="యసాదా’స్<br><span>కన్‌స్ట్రక్షన్</span>" data-hi-html="यासदा’स<br><span>कंस्ट्रक्शन</span>">YASADA’S<br><span>CONSTRUCTION</span></h1>
+<p data-en="Transforming Spaces with Quality Tiles & Granite." data-te="నాణ్యమైన టైల్స్ మరియు గ్రానైట్ పనులతో మీ స్థలానికి అందమైన రూపం." data-hi="बेहतरीन टाइल्स और ग्रेनाइट के काम से आपके स्थान को सुंदर बनाते हैं।">Transforming Spaces with Quality Tiles & Granite.</p>
+<p data-en="Beautiful spaces for your home — quality tiles and granite work." data-te="మీ ఇంటికి అందమైన రూపం — నాణ్యమైన టైల్స్ & గ్రానైట్ పనులు." data-hi="आपके घर को खूबसूरत बनाएँ — बेहतरीन टाइल्स और ग्रेनाइट का काम।">Beautiful spaces for your home — quality tiles and granite work.</p>
+<div class="actions"><a class="btn gold" href="https://wa.me/917013651332?text=Hello%20Yasada%27s%20Construction%2C%20I%20need%20a%20quotation" target="_blank" rel="noopener">Get a Free Quote</a><a class="btn outline" href="https://wa.me/919390177670?text=Hello%2C%20I%20would%20like%20to%20know%20your%20services" target="_blank" rel="noopener">Ask About Services</a></div></div></section>
+<section id="about" class="about"><div class="wrap grid two"><div class="section-head"><div class="eyebrow">About Our Company</div><h2>Finishing spaces with care and craftsmanship.</h2><p>Yasada’s Construction offers tiles and granite work for homes and commercial spaces in Karimnagar and across Telangana. Contact us to discuss your requirements and request a quotation.</p></div><div class="about-box"><div class="eyebrow">People Behind the Work</div><h3>Yasada Mallesham</h3><p>Main contact</p><h3>Yasada Pranay</h3><p>Contact and enquiries</p><span class="person">Quality</span><span class="person">Trust</span><span class="person">Careful finishing</span></div></div></section>
+<section id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">What We Do</div><h2>Tiles & granite services</h2><p>Tell us about your space and we’ll discuss the right finish for your needs.</p></div><div class="grid three">
+<article class="card"><div class="card-body"><div class="icon">▦</div><h3>Floor & Wall Tiles</h3><p>Tile work for living rooms, bedrooms, kitchens, bathrooms and other spaces.</p></div></article>
+<article class="card"><div class="card-body"><div class="icon">◆</div><h3>Granite Work</h3><p>Granite installation and finishing for suitable home and commercial applications.</p></div></article>
+<article class="card"><div class="card-body"><div class="icon">⌂</div><h3>Kitchen & Bathroom Finishes</h3><p>Practical, neat tile and granite finishes for everyday-use spaces.</p></div></article>
+</div></div></section>
+<section id="gallery" class="about"><div class="wrap"><div class="section-head"><div class="eyebrow">Design Inspiration</div><h2>Ideas for your next space</h2><p>Explore sample interiors and finishes to help describe the look you want.</p></div><div class="grid three">
+<article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=80')"><div><h3>Modern Living Spaces</h3><p>Sample design inspiration</p></div></article>
+<article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80')"><div><h3>Elegant Flooring</h3><p>Sample design inspiration</p></div></article>
+<article class="card gallery-card" style="background-image:url('https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=80')"><div><h3>Kitchen & Interior Finishes</h3><p>Sample design inspiration</p></div></article>
+</div><p class="notice" style="margin-top:22px">Gallery photos are sample design inspiration, not verified photographs of completed projects. Replace them with your own project photos when available.</p></div></section>
+<section class="why"><div class="wrap"><div class="section-head"><div class="eyebrow">Why Contact Us</div><h2>Your space, your style</h2></div><div class="grid three">
+<div class="card"><div class="card-body"><div class="icon">✓</div><h3>Discuss Your Needs</h3><p>Talk through your design, area and preferred finish before requesting a quote.</p></div></div>
+<div class="card"><div class="card-body"><div class="icon">⌖</div><h3>Serving Telangana</h3><p>Based in Karimnagar and available to discuss work across Telangana.</p></div></div>
+<div class="card"><div class="card-body"><div class="icon">₹</div><h3>Request a Quote</h3><p>Share the work details on WhatsApp to ask for a quotation.</p></div></div>
+</div></div></section>
+<section><div class="wrap quote"><div><h2>Planning a tile or granite project?</h2><p>Tell us what you need and request a free quotation.</p></div><a class="btn gold" href="https://wa.me/917013651332?text=Hello%20Yasada%27s%20Construction%2C%20please%20provide%20a%20quotation" target="_blank" rel="noopener">Get a Free Quote ↗</a></div></section>
+<section class="contact" id="contact"><div class="wrap"><div class="section-head"><div class="eyebrow">Contact Us</div><h2>Let’s talk about your project.</h2><p>Contact us for service details and a quotation.</p></div><div class="grid two">
+<div class="contact-card"><h3>Yasada Mallesham</h3><p>Main contact</p><p><strong>Phone:</strong> <a href="tel:+917013651332">7013651332</a></p><a class="btn gold" href="https://wa.me/917013651332" target="_blank" rel="noopener">WhatsApp · Get a Quote</a></div>
+<div class="contact-card"><h3>Yasada Pranay</h3><p>Contact and enquiries</p><p><strong>Phone:</strong> <a href="tel:+919390177670">9390177670</a></p><a class="btn outline" href="https://wa.me/919390177670" target="_blank" rel="noopener">WhatsApp · Ask About Services</a></div>
+</div><p style="color:var(--muted);margin-top:24px">📍 Karimnagar, Telangana, India · Service area: across Telangana</p></div></section>
 </main>
-<footer>
-  <div class="wrap footer-row"><span>© <span id="year"></span> Yasada’s Construction. All rights reserved.</span><span>Tiles • Granite • Quality Finishing</span></div>
-</footer>
+<footer><div class="wrap footer-row"><span>© <span id="year"></span> Yasada’s Construction. All rights reserved.</span><span>Tiles • Granite • Quality Finishing</span></div></footer>
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
-  const language = document.getElementById('language');
-  language.addEventListener('change', () => {
-    const lang = language.value;
-    document.querySelectorAll('[data-en],[data-te],[data-hi]').forEach(el => {
-      const value = el.dataset[lang];
-      if (value !== undefined) el.textContent = value;
-    });
-    document.querySelectorAll('[data-en-html],[data-te-html],[data-hi-html]').forEach(el => {
-      const value = el.dataset[lang + 'Html'];
-      if (value !== undefined) el.innerHTML = value;
-    });
-  });
+document.getElementById('year').textContent=new Date().getFullYear();
+const language=document.getElementById('language');
+language.addEventListener('change',()=>{const lang=language.value;document.querySelectorAll('[data-en],[data-te],[data-hi]').forEach(el=>{const value=el.dataset[lang];if(value!==undefined)el.textContent=value;});document.querySelectorAll('[data-en-html],[data-te-html],[data-hi-html]').forEach(el=>{const value=el.dataset[lang+'Html'];if(value!==undefined)el.innerHTML=value;});});
 </script>
 </body>
 </html>
+"""
+p = Path("/mnt/data/index.html")
+p.write_text(content, encoding="utf-8")
+print("Created the complete replacement index.html file.")
